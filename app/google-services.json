@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "282074804304",
+    "firebase_url": "https://student-massege-default-rtdb.europe-west1.firebasedatabase.app",
+    "project_id": "student-massege",
+    "storage_bucket": "student-massege.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:282074804304:android:abd4f7085be14dffcde155",
+        "android_client_info": {
+          "package_name": "com.example.studentmessage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "282074804304-gm7f3430eqgoa17imlndi2l6er6ooh81.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.studentmessage",
+            "certificate_hash": "62552720453ab2ddfdb506808d0ab63ed0b0df28"
+          }
+        },
+        {
+          "client_id": "282074804304-t276jd29i05bt74hm8i0lnbp5q8p4l5a.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDgWIc7i1MJaNsXvGUKoE93MxU55q3WCvk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "282074804304-t276jd29i05bt74hm8i0lnbp5q8p4l5a.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
