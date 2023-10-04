@@ -4,15 +4,51 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:backgroundTint="#0070BF"
+    android:outlineProvider="none"
+    android:scrollbarTrackHorizontal="@mipmap/ic_launcher_foreground"
+    android:scrollbarTrackVertical="@mipmap/ic_launcher_foreground"
     tools:context=".SigninAct">
 
     <Button
         android:id="@+id/bSignin"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="141dp"
+        android:layout_height="41dp"
+        android:background="@color/sm_blue_light"
+        android:backgroundTint="@color/white"
+        android:foregroundTint="#0070BF"
+        android:outlineProvider="background"
+        android:shadowColor="@color/sm_blue_dark"
         android:text="Google sign in"
+        android:textColor="@color/sm_blue_light"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.562"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.705" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        app:layout_constraintBottom_toBottomOf="@+id/bSignin"
+        app:layout_constraintEnd_toStartOf="@+id/bSignin"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/bSignin"
+        app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
+
+    <ImageView
+        android:id="@+id/imageView5"
+        android:layout_width="70dp"
+        android:layout_height="63dp"
+        app:layout_constraintBottom_toTopOf="@+id/imageView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.67"
+        app:srcCompat="@drawable/smd" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
