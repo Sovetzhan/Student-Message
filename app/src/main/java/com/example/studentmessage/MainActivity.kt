@@ -40,7 +40,7 @@ class MainActivity : AppCompatActivity() {
         val myRef = database.getReference("message")
 
         val currentDateTime = LocalDateTime.now()
-        val formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("HH:mm dd.MM.yy"))
+        val formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("\bHH:mm   dd.MM"))
 
 
         binding.button2.setOnClickListener{

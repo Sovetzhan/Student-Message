@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:backgroundTint="#0070BF"
+    android:background="@drawable/_669660756_5_pibig_info_p_fon_dlya_chata_instagram_5"
     android:outlineProvider="none"
     android:scrollbarTrackHorizontal="@mipmap/ic_launcher_foreground"
     android:scrollbarTrackVertical="@mipmap/ic_launcher_foreground"

@@ -19,11 +19,11 @@ class UserAdapter : ListAdapter<User, UserAdapter.ItemHolder>(ItemComparator()) 
     class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
 
         fun bind(user: User) {
-            val userName = itemView.findViewById<TextView>(R.id.userName)
+
             val message = itemView.findViewById<TextView>(R.id.message)
             val rlTime = itemView.findViewById<TextView>(R.id.rlTime)
 
-            userName.text = user.name
+
             message.text = user.message
             rlTime.text = user.datetime
         }
