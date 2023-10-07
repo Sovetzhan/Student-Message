@@ -1,26 +1,35 @@
-package com.example.studentmessage
-
 import android.view.LayoutInflater
+import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.example.studentmessage.databinding.UserListItemBinding
+import com.example.studentmessage.R
+import com.example.studentmessage.User
+import com.google.firebase.auth.FirebaseAuth
 
-class UserAdapter: ListAdapter<User, UserAdapter.ItemHolder>(ItemComparator()) {
-    class ItemHolder(private val binding: UserListItemBinding) : RecyclerView.ViewHolder(binding.root){
-        fun bind(user: User) = with(binding){
-            message.text = user.message
+class UserAdapter : ListAdapter<User, UserAdapter.ItemHolder>(ItemComparator()) {
+
+    companion object {
+        private const val VIEW_TYPE_CURRENT_USER = 1
+        private const val VIEW_TYPE_OTHER_USER = 2
+    }
+
+    class ItemHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
+
+        fun bind(user: User) {
+            val userName = itemView.findViewById<TextView>(R.id.userName)
+            val message = itemView.findViewById<TextView>(R.id.message)
+            val rlTime = itemView.findViewById<TextView>(R.id.rlTime)
+
             userName.text = user.name
-        }
-        companion object{
-            fun create(parent: ViewGroup): ItemHolder{
-                return ItemHolder(UserListItemBinding
-                    .inflate(LayoutInflater.from(parent.context), parent, false))
-            }
+            message.text = user.message
+            rlTime.text = user.datetime
         }
     }
-    class ItemComparator : DiffUtil.ItemCallback<User>(){
+
+    class ItemComparator : DiffUtil.ItemCallback<User>() {
         override fun areItemsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem == newItem
         }
@@ -28,14 +37,41 @@ class UserAdapter: ListAdapter<User, UserAdapter.ItemHolder>(ItemComparator()) {
         override fun areContentsTheSame(oldItem: User, newItem: User): Boolean {
             return oldItem == newItem
         }
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ItemHolder {
-        return ItemHolder.create(parent)
+        val layoutInflater = LayoutInflater.from(parent.context)
+        val itemView: View
+
+        if (viewType == VIEW_TYPE_CURRENT_USER) {
+            itemView = layoutInflater.inflate(R.layout.user_list_item, parent, false)
+        } else {
+            itemView = layoutInflater.inflate(R.layout.contact_list_item, parent, false)
+        }
+
+        return ItemHolder(itemView)
     }
 
     override fun onBindViewHolder(holder: ItemHolder, position: Int) {
-        holder.bind(getItem(position))
+        val user = getItem(position)
+        holder.bind(user)
+    }
+
+    override fun getItemViewType(position: Int): Int {
+        val user = getItem(position)
+        return if (userIsCurrentUser(user)) VIEW_TYPE_CURRENT_USER else VIEW_TYPE_OTHER_USER
+    }
+
+    private fun userIsCurrentUser(user: User): Boolean {
+        // Получите текущего авторизованного пользователя, если такой существует
+        val currentUser = FirebaseAuth.getInstance().currentUser
+
+        // Проверьте, авторизован ли пользователь
+        if (user.name == currentUser?.displayName) {
+            return true
+        } else {
+            // Если пользователь не авторизован, верните false
+            return false
+        }
     }
 }

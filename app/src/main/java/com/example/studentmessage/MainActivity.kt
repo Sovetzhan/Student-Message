@@ -1,5 +1,7 @@
 package com.example.studentmessage
 
+import UserAdapter
+import android.annotation.SuppressLint
 import android.graphics.drawable.BitmapDrawable
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -14,22 +16,36 @@ import com.google.firebase.database.ValueEventListener
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.squareup.picasso.Picasso
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
+
+object MyApplication {
+    val auth: FirebaseAuth = FirebaseAuth.getInstance()
+}
 
 class MainActivity : AppCompatActivity() {
     lateinit var binding: ActivityMainBinding
     lateinit var adapter: UserAdapter
     lateinit var auth: FirebaseAuth
 
+    @SuppressLint("NewApi")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
         auth = Firebase.auth
+        val s = auth
         setUpActionBar()
         val database = Firebase.database
         val myRef = database.getReference("message")
+
+        val currentDateTime = LocalDateTime.now()
+        val formattedDateTime = currentDateTime.format(DateTimeFormatter.ofPattern("HH:mm dd.MM.yy"))
+
+
         binding.button2.setOnClickListener{
-            myRef.child(myRef.push().key ?: "sfs").setValue(User(auth.currentUser?.displayName, binding.edMsg.text.toString()))
+            myRef.child(myRef.push().key ?: "sfs")
+                .setValue(User(auth.currentUser?.displayName, binding.edMsg.text.toString(), formattedDateTime))
         }
         onChangeListener(myRef)
         initRcView()
