@@ -13,6 +13,9 @@
         android:theme="@style/Theme.StudentMessage"
         tools:targetApi="31">
         <activity
+            android:name=".ContactList"
+            android:exported="false" />
+        <activity
             android:name=".activity_user_info"
             android:exported="false" />
         <activity

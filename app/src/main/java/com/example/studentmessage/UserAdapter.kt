@@ -46,7 +46,7 @@ class UserAdapter : ListAdapter<User, UserAdapter.ItemHolder>(ItemComparator()) 
         if (viewType == VIEW_TYPE_CURRENT_USER) {
             itemView = layoutInflater.inflate(R.layout.user_list_item, parent, false)
         } else {
-            itemView = layoutInflater.inflate(R.layout.contact_list_item, parent, false)
+            itemView = layoutInflater.inflate(R.layout.message_list_item, parent, false)
         }
 
         return ItemHolder(itemView)

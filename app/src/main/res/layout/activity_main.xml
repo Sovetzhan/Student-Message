@@ -38,7 +38,7 @@
         android:id="@+id/rcView"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/_669660756_5_pibig_info_p_fon_dlya_chata_instagram_5"
+        android:background="@drawable/_20621f319a517ade260fa54f38f791a916dde81_hq"
         app:layout_constraintBottom_toTopOf="@+id/edMsg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
